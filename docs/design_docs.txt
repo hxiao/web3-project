@@ -1,0 +1,137 @@
+605.481 Class Project
+Design Document
+
+Technologies
+------------
+- Apache, Tomcat, and MySQL: Required to be used.
+- Grails: Uses Groovy (a JVM language), Spring, and Hibernate. Using Grails will remove some of the boilerplate involved in creating a web application or web service, including routing. It will also take some of the work out of the data layer code and provide a basic MVC structure. Grails uses JSPs for its views and will allow me to build a war to deploy directly into Tomcat.
+- Backbone.js: I want to try Backbone in conjunction with the frontend JSPs. Backbone provides a structure for Javascript to separate the logic from the DOM manipulation. I've frequently implmented something similar to Backbone myself using other Javascript libraries such as jQuery, but I would like to see if Backbone provides a better structure than my usual patterns.
+
+
+Components
+----------
+
+User
+- Attributes: firstName, lastName, phoneNumber, emailAddress, password, userRole
+- Methods: getFirstName, setFirstName, getLastName, setLastName, getPhoneNumber, setPhoneNumber, getEmailAddress, checkPassword, setPassword, getUserRole, setUserRole
+
+League
+- Attributes: name, administrator, year, season
+- Methods: getName, setName, getAdministrator, setAdministrator, getYear, setYear, getSeason, setSeason
+
+Location
+- Attributes: name, address, pointOfContact
+- Methods: getName, setName, getAddress, setAddress, getPointOfContact, setPointOfContact
+
+Team
+- Attributes: name, coach, league
+- Methods: getName, setName, getCoach, setCoach, getLeague, setLeague
+
+Player
+- Attributes: user, team, age, position
+- Methods: getUser, setUser, getTeam, setTeam, getAge, setAge, getPosition, setPosition
+
+Game
+- Attributes: homeTeam, awayTeam, datetime, location, homeScore, awayScore
+- Methods: getHomeTeam, getAwayTeam, getDatetime, getLocation, getHomeScore, getAwayScore, setHomeTeam, setAwayTeam, setDatetime, setLocation, setHomeScore, setAwayScore
+
+
+Relationships between these objects follow the data model for the project, with User corresponding to the Contact table in the data model.
+
+Controllers for each of these objects/resources will manipulate the data objects specified above according to the inputs and outputs of the views. Generally controllers will allow for the web service to be RESTful. For example, for the LocationsController I would implement the following methods: index, new, edit, create, update, destroy. The routes going to these methods would look something like this:
+
+GET /locations -> index: list Locations
+GET /locations/new -> new: add a new Location
+GET /locations/{id}/edit -> edit: edit Location with the specified id
+POST /locations -> create: create a Location according to submitted parameters
+PUT /locations/{id} -> update: update Location with the specified ids according to submitted parameters
+DELETE /locations/{id} -> destroy: delete Location with the specified id
+
+This isn't final nor is it meant to cover every possibility, but it is an example of how I would design a controller class for the application.
+
+
+Storyboards
+-----------
+
+Home Page
+- All users will be able to see the scheduled games and results for the current day.
+- All users will be able to input a league name, year, and season to view the league page.
+- League administrators will see a link to manage their leagues.
+- League administrators will see a link to manage field locations.
+- Logged in users will see a link to edit their own contact information along with their user role. This information will stay on the screen as long as they are logged in.
+
+Login
+- Users will see input fields to input an email address and a password.
+- System will provide either confirmation of login or an error message, depending on whether login is successful.
+
+View League
+- All users will be able to see the league name, season, and year.
+- All users will be able to see links to the the league standings and league games.
+- All users will be able to see a list of links to the teams in the league.
+- League administrator for the league will be able to delete the league.
+- League administrator for the league will see an edit link to edit the league.
+- League administrator for the league will be see a link to add a team to the league.
+
+Add/Edit League
+- The page will display a form or a modal dialog that asks the user to fill in the necessary details to add/edit a league. The league administrator can either select Save to save the league or Cancel to discard his/her changes.
+- If editing the league, the page will start with the current information for the league filled into the inputs.
+
+View Team
+- All users will be able to see the team name, coach, and league information.
+- All users will be able to see the team's roster (players and positions).
+- All users will be able to see a link to the team's games.
+- League administrator for the league will see a link to delete the team.
+- Coach of the team and the league administrator will see links to edit team information.
+- Coach of the team will see a link to add a player to the team.
+- Coach of the team and players on the team will see links to players' user information.
+- Coaches of other teams in the league will see links to players' user information.
+
+Add Team
+- The page will display a form or a modal dialog that asks the user to fill in the necessary details to add a team. The league administrator can either select Save to save the team or Cancel to discard his/her changes.
+- In selecting the coach for the team, the league administrator can either select an existing user or create a new user account for a coach. Providing a new user account means the administrator must input an email address not in use in the system as well as a password and first/last name.
+
+Edit Team
+- The page will display a form or a modal dialog that asks the user to fill in the necessary details to edit a team. The league administrator or coach can either select Save to save the team or Cancel to discard his/her changes.
+
+View Player
+- All users will be able to see the player's team and position.
+- League administrators, coaches in the player's league, and players on the same team can see the player's contact information.
+- Coaches will see a link to edit/delete the player.
+
+Add Player
+- The page will display a form or a modal dialog that asks the user to fill in the necessary details to add a player. The coach can either select Save to save the player or Cancel to discard his/her changes.
+- In selecting the user for the player, the coach can either select an existing user or create a new user account for a player. Providing a new user account means the coach must input an email address not in use in the system as well as a password and first/last name.
+
+Edit Player
+- The page will display a form or a modal dialog that asks the user to fill in the necessary details to edit a player. The coach can either select Save to save the player or Cancel to discard his/her changes.
+
+Edit Contact Information
+- The user who owns the account can edit his/her contact information by filling in the contact information into the input fields, and selecting to save the details. He/she can also navigate to another page or select Cancel to discard the changes.
+
+View Standings/Games
+- All users can see the league standings, as well as browse all the league games. The league games will have links next to them so that users can view those games independently.
+- League administrators can see a link to add a league game.
+
+View Game
+- All users can see the home team information, away team information, location, and date/time of the game.
+- League administrators will be able to see a link to edit the location.
+- League administrators will be able to see a link to edit or delete the game.
+- League administrators will be able to see a link to record the game result.
+
+Add/Edit Game
+- The page will display a form or a modal dialog that asks the user to fill in the necessary details to add/edit a game. The league administrator can either select Save to save the game or Cancel to discard his/her changes.
+
+Record Game Result
+- Only league administrators may record game results.
+- The league administrator will be able to input the home score and away score of the selected game, and either select Save to save the game or Cancel to discard changes.
+
+View Field Location
+- All users can see the address, name, and point of contact details for the field.
+- League administrators can see links to edit or delete the location.
+
+Add/Edit Field Location
+- The page will display a form or a modal dialog that asks the user to fill in the necessary details to add/edit a location. The league administrator can either select Save to save the location or Cancel to discard his/her changes.
+- The league administrator must provide a user as the point of contact for the field location. This must be a registered site user (of any role).
+
+Deleting Data Objects
+- When deleting any data, the user will be presented with a confirmation box to confirm that he/she wishes to delete the object.

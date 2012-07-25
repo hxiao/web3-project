@@ -1,0 +1,90 @@
+Project Requirements
+
+Data Objects
+  User
+  - first name
+  - last name
+  - phone number
+  - email address
+  - password
+  * unique identifier: email address
+
+  League
+  - name
+  - administrator
+  - year
+  - season (fall, winter, spring, summer)
+  * unique identifier: name, season, year
+
+  Location
+  - name
+  - address
+  - point of contact (registered site user)
+  * unique identifier: address
+
+  Team
+  - name
+  - coach
+  - league
+  * unique identifier: name and league
+
+  Player
+  - user
+  - team
+  - age
+  - position (attack, midfield, defense, goalie)
+  * unique identifier: user, team
+
+  Game
+  - home team
+  - away team
+  - date
+  - time
+  - location
+  - score
+  * unique identifier: home team, away team, date, time
+
+User Roles
+  League Administrator
+  - can add/edit/delete leagues
+  - can add/edit/delete teams
+  - can create/grant access to user accounts for Coaches
+  - can add/edit/delete league games
+  - can record game results
+  - can add/edit/delete fields where games are played
+  - can view team and player information for all teams and players in their leagues
+
+  Coach
+  - can edit team information
+  - can add/edit/delete players
+  - can create/grant access to user accounts for Players/Parents
+  - can view team rosters for their leagues
+
+  Player/Parent
+  - can edit their player information
+  - can view but not modify player information for players on their team
+  - can view but not modify player names and positions for other teams in their leagues
+
+  Any User (including non-logged in users)
+  - can view but not modify game schedules, results, league standings, and field information
+  - can select a specific league by name, year, and season to see a summary
+  
+Technical Requirements
+  - The application should be accessible via the Internet.  
+  - Data will be stored in a MySQL relational database.
+  - The website should be accessible through Firefox, Chrome, Opera, and IE.
+  - The web application should be able to run in Apache Web Server and/or Tomcat.
+
+Other Requirements
+  - Games can only be played between teams in the same league (same name, season, year).
+  - Users will log in with email address and password or browse the site as an anonymous user.
+  - League administrators add coaches to the site by specifying their email address and a temporary password. Coaches can update their user information and change their password the first time they log in. Coaches add players/parents to the site in the same fashion.
+  - When league administrators assign a coach to a team, they may choose an existing coach or create a new user account.
+  - When coaches assign a player to a team, they may choose and existing player/parent or create a new user account.
+  - The site should include any displays necessary for users to be able to perform tasks that their role allows them to do.
+
+
+QUESTIONS
+- Can coaches view player information on other teams' rosters in their leagues, or only player names and positions?
+- What web browser versions is the application required to support?
+- Should the application make it possible for a user to have different roles for different leagues? For example, can a user be a league administrator for one league but a player in a different league? What about different roles within the same league, like a player/coach?
