@@ -1,10 +1,10 @@
-Jul 24, 2012 10:32:45 PM org.apache.coyote.AbstractProtocol init
+Jul 25, 2012 2:50:53 PM org.apache.coyote.AbstractProtocol init
 INFO: Initializing ProtocolHandler ["http-bio-8080"]
-Jul 24, 2012 10:32:45 PM org.apache.catalina.core.StandardService startInternal
+Jul 25, 2012 2:50:53 PM org.apache.catalina.core.StandardService startInternal
 INFO: Starting service Tomcat
-Jul 24, 2012 10:32:45 PM org.apache.catalina.core.StandardEngine startInternal
+Jul 25, 2012 2:50:53 PM org.apache.catalina.core.StandardEngine startInternal
 INFO: Starting Servlet Engine: Apache Tomcat/7.0.27
-Jul 24, 2012 10:32:45 PM org.apache.catalina.startup.ContextConfig getDefaultWebXmlFragment
+Jul 25, 2012 2:50:53 PM org.apache.catalina.startup.ContextConfig getDefaultWebXmlFragment
 INFO: No global web.xml found
-Jul 24, 2012 10:32:46 PM org.apache.catalina.core.ApplicationContext log
+Jul 25, 2012 2:50:54 PM org.apache.catalina.core.ApplicationContext log
 INFO: Initializing Spring root WebApplicationContext

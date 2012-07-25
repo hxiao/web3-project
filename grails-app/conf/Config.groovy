@@ -59,6 +59,9 @@ grails.exceptionresolver.params.exclude = ['password']
 // configure auto-caching of queries by default (if false you can cache individual queries with 'cache: true')
 grails.hibernate.cache.queries = false
 
+// don't show dbdoc controller
+grails.plugin.databasemigration.dbDocController.enabled = false
+
 environments {
     development {
         grails.logging.jul.usebridge = true
