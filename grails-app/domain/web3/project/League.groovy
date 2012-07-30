@@ -5,6 +5,7 @@ class League {
   String year
   String season
   Contact admin
+  static hasMany = [teams: Team]
 
   static mapping = {
     table "League"
@@ -17,5 +18,8 @@ class League {
   }
 
   static constraints = {
+    name blank: false
+    year blank: false
+    season blank: false
   }
 }

@@ -2,6 +2,7 @@ package web3.project
 
 class Role {
   String type
+  static hasMany = [contacts: Contact]
 
   static mapping = {
     table "Role"

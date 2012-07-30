@@ -5,6 +5,7 @@ class Location {
   String city
   String zipCode
   Contact contact
+  static hasMany = [games: Game]
 
   static mapping = {
     table "Location"

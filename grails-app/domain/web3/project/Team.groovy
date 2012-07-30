@@ -4,6 +4,7 @@ class Team {
   String name
   League league
   Contact coach
+  static hasMany = [players: Player]
 
   static mapping = {
     table "Team"

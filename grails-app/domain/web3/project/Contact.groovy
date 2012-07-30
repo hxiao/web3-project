@@ -7,6 +7,7 @@ class Contact {
   String phone
   String password
   Role role
+  static hasMany = [leagues: League, teams: Team, locations: Location]
 
   static mapping = {
     table "Contact"

@@ -26,7 +26,9 @@ class Game {
   }
 
   static constraints = {
-    homeScore nullable: false
-    awayScore nullable: false
+    homeTeam nullable: false
+    awayTeam nullable: false
+    homeScore nullable: true
+    awayScore nullable: true
   }
 }
