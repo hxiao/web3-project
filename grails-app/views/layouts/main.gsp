@@ -14,7 +14,7 @@
 		<link rel="apple-touch-icon" sizes="114x114" href="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'screen.css')}" type="text/css">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
-		<g:layoutHead/>
+		<g:layoutHead />
 		<r:layoutResources />
 	</head>
 	<body>
@@ -25,7 +25,7 @@
 		  <p id="intro">For Lacrosse and Other Sports</p>
 		
 		  <!-- navigation -->
-		  <div  id="nav">
+		  <div id="nav">
 			  <ul>
 				  <li id="current"><a href="index.html">Home</a></li>
 				  <li><a href="style.html">Style Demo</a></li>
@@ -34,7 +34,11 @@
 				  <li><a href="index.html">Support</a></li>
 				  <li><a href="index.html">About</a></li>		
 			  </ul>		
-		  </div>		
+		  </div>
+
+      <div id="login-header">
+        <g:loginControl />
+      </div>
 		
 		  <div id="header-image"></div> 		
 	  <!-- header ends here -->
@@ -44,6 +48,7 @@
 	  <div id="content-outer"><div id="content-wrapper" class="container_16">
 		
       <!-- left-columns starts -->
+      <!--
 		  <div id="left-columns" class="grid_4">
 		
 			  <div class="grid_4 alpha">
@@ -69,11 +74,11 @@
 				  </div>
 			  </div>
 		  
+		  </div> -->		
       <!-- end left-columns -->
-		  </div>		
 		  
-		  <!-- main -->
-		  <div id="main" class="grid_12">
+      <!-- main -->
+		  <div id="main" class="grid_16">
         <g:layoutBody/>
 		  <!-- main ends -->
 		  </div>

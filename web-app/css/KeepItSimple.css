@@ -237,6 +237,22 @@ input.button {
 	right: 10px; top: 0;	
 }
 
+#header #login-header {
+	position: absolute;
+	top: 10px; right: 0;
+	padding: 0; margin: 0;
+	border: none;
+	width: 270px; height: 45px;
+	z-index: 999999;
+	margin: 0;
+	padding: 0 15px 0 5px;
+	color: #666666;
+	font: 13px 'Trebuchet MS', 'Helvetica Neue', Arial, Sans-Serif;
+  line-height: 130%;
+  vertical-align: middle;
+  text-align: right;
+}
+
 /* header quick search */
 #header form#quick-search {
 	position: absolute;
