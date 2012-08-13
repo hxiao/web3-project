@@ -26,6 +26,10 @@ class Contact {
     firstName blank: false
     email blank: false, email: true, unique: true
     phone nullable: true
-    password blank: false
+    password blank: false, password: true
+  }
+
+  String toString() {
+    lastName + ", " + firstName
   }
 }
