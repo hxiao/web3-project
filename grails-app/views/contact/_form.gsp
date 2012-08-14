@@ -47,6 +47,7 @@
 		<g:message code="contact.role.label" default="Role" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="role" name="role.id" from="${web3.project.Role.list()}" optionKey="id" required="" value="${contactInstance?.role?.id}" class="many-to-one"/>
+	<g:hiddenField id="role" name="role.id" from="${web3.project.Role.list()}" optionKey="id" required="" value="${contactInstance?.role?.id}" class="many-to-one"/>
+	<g:message code="contact.role.value" default="${contactInstance?.role.type}"/>
 </div>
 

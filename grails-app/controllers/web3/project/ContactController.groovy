@@ -4,6 +4,8 @@ import org.springframework.dao.DataIntegrityViolationException
 
 class ContactController {
 
+		def securityService
+
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index() {
@@ -16,10 +18,21 @@ class ContactController {
     }
 
     def create() {
+				if(session.user == null || session.user.role.type.equals("Player")) {
+					flash.message = "You are not authorized to do that."
+					redirect(action: "list")
+				}
+				
         [contactInstance: new Contact(params)]
     }
 
     def save() {
+	
+				if(session.user == null) {
+					flash.message = "You are not authorized to do that."
+					redirect(action: "list")
+				}
+	
         def contactInstance = new Contact(params)
         if (!contactInstance.save(flush: true)) {
             render(view: "create", model: [contactInstance: contactInstance])
@@ -31,6 +44,12 @@ class ContactController {
     }
 
     def show(Long id) {
+				
+				if(session.user == null) {
+					flash.message = "You are not authorized to do that."
+					redirect(action: "list")
+				}
+	
         def contactInstance = Contact.get(id)
         if (!contactInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'contact.label', default: 'Contact'), id])
@@ -42,6 +61,12 @@ class ContactController {
     }
 
     def edit(Long id) {
+				
+				if(session.user == null) {
+					flash.message = "You are not authorized to do that."
+					redirect(action: "list")
+				}
+				
         def contactInstance = Contact.get(id)
         if (!contactInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'contact.label', default: 'Contact'), id])
@@ -53,6 +78,12 @@ class ContactController {
     }
 
     def update(Long id, Long version) {
+	
+				if(session.user == null) {
+					flash.message = "You are not authorized to do that."
+					redirect(action: "list")
+				}
+	
         def contactInstance = Contact.get(id)
         if (!contactInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'contact.label', default: 'Contact'), id])
@@ -82,6 +113,12 @@ class ContactController {
     }
 
     def delete(Long id) {
+	
+				if(session.user == null || !session.user.role.type.equals("League Admin")) {
+					flash.message = "You are not authorized to do that."
+					redirect(action: "list")
+				}
+	
         def contactInstance = Contact.get(id)
         if (!contactInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'contact.label', default: 'Contact'), id])
@@ -116,8 +153,13 @@ class ContactController {
 	  }
 
 	  def logout = {
+			if(session.user == null) {
+				flash.message = "You are not logged in."
+				redirect(action: "list")
+			}
+		
 	    flash.message = "Goodbye ${session.user.firstName}."
 	    session.user = null
-	    redirect(controller:"league", action:"list")      
+	    redirect(uri: "/")      
 	  }
 }

@@ -8,10 +8,8 @@
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<a href="#show-contact" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
 			<ul>
-				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
@@ -58,53 +56,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${contactInstance?.password}">
-				<li class="fieldcontain">
-					<span id="password-label" class="property-label"><g:message code="contact.password.label" default="Password" /></span>
-					
-						<span class="property-value" aria-labelledby="password-label"><g:fieldValue bean="${contactInstance}" field="password"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${contactInstance?.leagues}">
-				<li class="fieldcontain">
-					<span id="leagues-label" class="property-label"><g:message code="contact.leagues.label" default="Leagues" /></span>
-					
-						<g:each in="${contactInstance.leagues}" var="l">
-						<span class="property-value" aria-labelledby="leagues-label"><g:link controller="league" action="show" id="${l.id}">${l?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${contactInstance?.locations}">
-				<li class="fieldcontain">
-					<span id="locations-label" class="property-label"><g:message code="contact.locations.label" default="Locations" /></span>
-					
-						<g:each in="${contactInstance.locations}" var="l">
-						<span class="property-value" aria-labelledby="locations-label"><g:link controller="location" action="show" id="${l.id}">${l?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${contactInstance?.role}">
 				<li class="fieldcontain">
 					<span id="role-label" class="property-label"><g:message code="contact.role.label" default="Role" /></span>
 					
-						<span class="property-value" aria-labelledby="role-label"><g:link controller="role" action="show" id="${contactInstance?.role?.id}">${contactInstance?.role?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${contactInstance?.teams}">
-				<li class="fieldcontain">
-					<span id="teams-label" class="property-label"><g:message code="contact.teams.label" default="Teams" /></span>
-					
-						<g:each in="${contactInstance.teams}" var="t">
-						<span class="property-value" aria-labelledby="teams-label"><g:link controller="team" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></span>
-						</g:each>
+						<span class="property-value" aria-labelledby="role-label"><g:fieldValue bean="${contactInstance}" field="role"/></span>
 					
 				</li>
 				</g:if>

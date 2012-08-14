@@ -39,6 +39,33 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${gameInstance?.date}">
+				<li class="fieldcontain">
+					<span id="date-label" class="property-label"><g:message code="game.date.label" default="Date" /></span>
+					
+						<span class="property-value" aria-labelledby="date-label"><g:formatDate format="MM/dd/yyyy" date="${gameInstance?.date}" /></span>
+					
+				</li>
+				</g:if>
+				
+				<g:if test="${gameInstance?.time}">
+				<li class="fieldcontain">
+					<span id="time-label" class="property-label"><g:message code="game.time.label" default="Time" /></span>
+					
+						<span class="property-value" aria-labelledby="time-label"><g:formatDate format="hh:mm a" date="${gameInstance?.time}" /></span>
+					
+				</li>
+				</g:if>
+				
+				<g:if test="${gameInstance?.location}">
+				<li class="fieldcontain">
+					<span id="location-label" class="property-label"><g:message code="game.location.label" default="Location" /></span>
+					
+						<span class="property-value" aria-labelledby="location-label"><g:link controller="location" action="show" id="${gameInstance?.location?.id}">${gameInstance?.location?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+				
 				<g:if test="${gameInstance?.homeScore}">
 				<li class="fieldcontain">
 					<span id="homeScore-label" class="property-label"><g:message code="game.homeScore.label" default="Home Score" /></span>
@@ -53,33 +80,6 @@
 					<span id="awayScore-label" class="property-label"><g:message code="game.awayScore.label" default="Away Score" /></span>
 					
 						<span class="property-value" aria-labelledby="awayScore-label"><g:fieldValue bean="${gameInstance}" field="awayScore"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${gameInstance?.date}">
-				<li class="fieldcontain">
-					<span id="date-label" class="property-label"><g:message code="game.date.label" default="Date" /></span>
-					
-						<span class="property-value" aria-labelledby="date-label"><g:formatDate date="${gameInstance?.date}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${gameInstance?.location}">
-				<li class="fieldcontain">
-					<span id="location-label" class="property-label"><g:message code="game.location.label" default="Location" /></span>
-					
-						<span class="property-value" aria-labelledby="location-label"><g:link controller="location" action="show" id="${gameInstance?.location?.id}">${gameInstance?.location?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${gameInstance?.time}">
-				<li class="fieldcontain">
-					<span id="time-label" class="property-label"><g:message code="game.time.label" default="Time" /></span>
-					
-						<span class="property-value" aria-labelledby="time-label"><g:formatDate date="${gameInstance?.time}" /></span>
 					
 				</li>
 				</g:if>
