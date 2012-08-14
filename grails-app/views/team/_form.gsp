@@ -26,6 +26,7 @@
 	<g:select id="league" name="league.id" from="${web3.project.League.list()}" optionKey="id" required="" value="${teamInstance?.league?.id}" class="many-to-one"/>
 </div>
 
+<!--
 <div class="fieldcontain ${hasErrors(bean: teamInstance, field: 'players', 'error')} ">
 	<label for="players">
 		<g:message code="team.players.label" default="Players" />
@@ -42,4 +43,5 @@
 </ul>
 
 </div>
+-->
 

@@ -33,21 +33,3 @@
 	</label>
 	<g:select id="contact" name="contact.id" from="${web3.project.Contact.list()}" optionKey="id" required="" value="${locationInstance?.contact?.id}" class="many-to-one"/>
 </div>
-
-<div class="fieldcontain ${hasErrors(bean: locationInstance, field: 'games', 'error')} ">
-	<label for="games">
-		<g:message code="location.games.label" default="Games" />
-		
-	</label>
-	
-<ul class="one-to-many">
-<g:each in="${locationInstance?.games?}" var="g">
-    <li><g:link controller="game" action="show" id="${g.id}">${g?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="game" action="create" params="['location.id': locationInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'game.label', default: 'Game')])}</g:link>
-</li>
-</ul>
-
-</div>
-

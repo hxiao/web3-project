@@ -21,18 +21,14 @@
     <!-- header starts-->
 	  <div id="header-wrap"><div id="header" class="container_16">						
 		
-		  <h1 id="logo-text"><a href="index.html" title="">League Manager</a></h1>
+		  <h1 id="logo-text"><a href="${createLink(uri: '/')}" title="">League Manager</a></h1>
 		  <p id="intro">For Lacrosse and Other Sports</p>
 		
 		  <!-- navigation -->
 		  <div id="nav">
 			  <ul>
 				  <li><a href="${createLink(uri: '/')}">Home</a></li>
-				  <li><a href="style.html">Style Demo</a></li>
-				  <li><a href="blog.html">Blog</a></li>
-				  <li><a href="index.html">Services</a></li>
-				  <li><a href="index.html">Support</a></li>
-				  <li><a href="index.html">About</a></li>		
+				  <li><a href="${createLink(uri: '/league/list')}">Leagues</a></li>		
 			  </ul>		
 		  </div>
 
