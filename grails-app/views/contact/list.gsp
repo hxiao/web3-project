@@ -8,10 +8,8 @@
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<a href="#list-contact" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
 			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
@@ -31,11 +29,9 @@
 						<g:sortableColumn property="email" title="${message(code: 'contact.email.label', default: 'Email')}" />
 					
 						<g:sortableColumn property="phone" title="${message(code: 'contact.phone.label', default: 'Phone')}" />
-					
-						<g:sortableColumn property="password" title="${message(code: 'contact.password.label', default: 'Password')}" />
-					
-						<th><g:message code="contact.role.label" default="Role" /></th>
-					
+						
+						<g:sortableColumn property="role" title="${message(code: 'contact.role.label', default: 'Role')}" />
+															
 					</tr>
 				</thead>
 				<tbody>
@@ -49,9 +45,7 @@
 						<td>${fieldValue(bean: contactInstance, field: "email")}</td>
 					
 						<td>${fieldValue(bean: contactInstance, field: "phone")}</td>
-					
-						<td>${fieldValue(bean: contactInstance, field: "password")}</td>
-					
+										
 						<td>${fieldValue(bean: contactInstance, field: "role")}</td>
 					
 					</tr>

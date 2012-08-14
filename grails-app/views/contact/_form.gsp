@@ -42,62 +42,11 @@
 	<g:field type="password" name="password" required="" value="${contactInstance?.password}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: contactInstance, field: 'leagues', 'error')} ">
-	<label for="leagues">
-		<g:message code="contact.leagues.label" default="Leagues" />
-		
-	</label>
-	
-<ul class="one-to-many">
-<g:each in="${contactInstance?.leagues?}" var="l">
-    <li><g:link controller="league" action="show" id="${l.id}">${l?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="league" action="create" params="['contact.id': contactInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'league.label', default: 'League')])}</g:link>
-</li>
-</ul>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: contactInstance, field: 'locations', 'error')} ">
-	<label for="locations">
-		<g:message code="contact.locations.label" default="Locations" />
-		
-	</label>
-	
-<ul class="one-to-many">
-<g:each in="${contactInstance?.locations?}" var="l">
-    <li><g:link controller="location" action="show" id="${l.id}">${l?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="location" action="create" params="['contact.id': contactInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'location.label', default: 'Location')])}</g:link>
-</li>
-</ul>
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: contactInstance, field: 'role', 'error')} required">
 	<label for="role">
 		<g:message code="contact.role.label" default="Role" />
 		<span class="required-indicator">*</span>
 	</label>
 	<g:select id="role" name="role.id" from="${web3.project.Role.list()}" optionKey="id" required="" value="${contactInstance?.role?.id}" class="many-to-one"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: contactInstance, field: 'teams', 'error')} ">
-	<label for="teams">
-		<g:message code="contact.teams.label" default="Teams" />
-		
-	</label>
-	
-<ul class="one-to-many">
-<g:each in="${contactInstance?.teams?}" var="t">
-    <li><g:link controller="team" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="team" action="create" params="['contact.id': contactInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'team.label', default: 'Team')])}</g:link>
-</li>
-</ul>
-
 </div>
 

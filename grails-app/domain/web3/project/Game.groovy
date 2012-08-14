@@ -1,11 +1,10 @@
 package web3.project
 
-import java.sql.Date
-import java.sql.Time
+import java.util.Date
 
 class Game {
   Date date
-  Time time
+  Date time
   Team homeTeam
   Team awayTeam
   Location location

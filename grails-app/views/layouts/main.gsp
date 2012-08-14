@@ -27,7 +27,7 @@
 		  <!-- navigation -->
 		  <div id="nav">
 			  <ul>
-				  <li id="current"><a href="index.html">Home</a></li>
+				  <li><a href="${createLink(uri: '/')}">Home</a></li>
 				  <li><a href="style.html">Style Demo</a></li>
 				  <li><a href="blog.html">Blog</a></li>
 				  <li><a href="index.html">Services</a></li>

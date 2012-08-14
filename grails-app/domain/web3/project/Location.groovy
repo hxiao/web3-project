@@ -22,4 +22,8 @@ class Location {
     city blank: false
     zipCode blank: false
   }
+
+	String toString() {
+		"${street}, ${city}, ${zipCode}"
+	}
 }
