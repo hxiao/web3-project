@@ -39,7 +39,7 @@
 		<g:message code="contact.password.label" default="Password" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="password" required="" value="${contactInstance?.password}"/>
+	<g:field type="password" name="password" required="" value="${contactInstance?.password}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: contactInstance, field: 'leagues', 'error')} ">

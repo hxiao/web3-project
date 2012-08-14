@@ -14,4 +14,8 @@ class Role {
   static constraints = {
     type blank: false
   }
+
+	String toString() {
+		type
+	}
 }

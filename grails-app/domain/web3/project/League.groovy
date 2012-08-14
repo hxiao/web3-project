@@ -1,8 +1,10 @@
 package web3.project
 
+import java.sql.Date
+
 class League {
   String name
-  String year
+  Short year
   String season
   Contact admin
   static hasMany = [teams: Team]
@@ -22,4 +24,8 @@ class League {
     year blank: false
     season blank: false
   }
+
+	String toString() {
+		"${name} (${season} ${year})"
+	}
 }

@@ -30,6 +30,6 @@ class Contact {
   }
 
   String toString() {
-    lastName + ", " + firstName
+  	"${lastName}, ${firstName} (${email})"
   }
 }
