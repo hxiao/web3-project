@@ -33,7 +33,7 @@
 					
 						<td><g:link action="show" id="${leagueInstance.id}">${fieldValue(bean: leagueInstance, field: "name")}</g:link></td>
 					
-						<td>${fieldValue(bean: leagueInstance, field: "year")}</td>
+						<td>${leagueInstance.year}</td>
 					
 						<td>${fieldValue(bean: leagueInstance, field: "season")}</td>
 					

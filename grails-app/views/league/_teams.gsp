@@ -26,7 +26,7 @@
 				<g:each in="${teamInstanceList}" status="i" var="teamInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${teamInstance.id}">${fieldValue(bean: teamInstance, field: "name")}</g:link></td>
+						<td><g:link action="show" controller="team" id="${teamInstance.id}">${fieldValue(bean: teamInstance, field: "name")}</g:link></td>
 					
 						<g:if test="${session.user != null && teamInstance.league.admin.id.equals(session.user.id)}">
 							<td><g:link action="show" controller="contact" id="${teamInstance.coach.id}">${fieldValue(bean: teamInstance, field: "coach")}</g:link></td>
@@ -45,5 +45,7 @@
 				</g:each>
 				</tbody>
 			</table>
+			<g:if test="${leagueInstance?.admin.id == session.user?.id}">
 			<g:link controller="team" action="create" params="${['team.league.id': leagueInstance.id]}">Create Team</g:link>
+			</g:if>
 		</div>
