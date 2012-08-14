@@ -23,7 +23,7 @@ class ContactController {
 					redirect(action: "list")
 				}
 				
-        [contactInstance: new Contact(params)]
+        [contactInstance: new Contact(params), lastController: params.lastController, lastAction: params.lastAction]
     }
 
     def save() {
@@ -40,7 +40,13 @@ class ContactController {
         }
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'contact.label', default: 'Contact'), contactInstance.id])
-        redirect(action: "show", id: contactInstance.id)
+
+				if(params.lastController == null || params.lastAction == null) {
+        	redirect(action: "show", id: contactInstance.id)
+				}
+				else {
+					redirect(controller: params.lastController, action: params.lastAction, params: [newContactId: contactInstance.id])
+				}
     }
 
     def show(Long id) {
@@ -140,7 +146,7 @@ class ContactController {
 		def login = {}
 
 	  def authenticate = {
-	    def user = Contact.findByEmailAndPassword(params.email, params.password)
+	    def user = Contact.findByEmailAndPassword(params.email, params.password, [fetch: [teams:"eager"]])
 	    if(user){
 	      session.user = user
 	      session.user.role = user.role

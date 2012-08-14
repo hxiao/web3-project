@@ -16,7 +16,8 @@ class PlayerController {
     }
 
     def create() {
-        [playerInstance: new Player(params)]
+        [playerInstance: new Player(params),
+				newContactId: params.newContactId]
     }
 
     def save() {

@@ -18,4 +18,8 @@ class Player {
 
   static constraints = {
   }
+
+	String toString() {
+		"${contact.lastName}, ${contact.firstName}"
+	}
 }

@@ -36,7 +36,12 @@
 					
 						<td><g:link action="show" id="${teamInstance.id}">${fieldValue(bean: teamInstance, field: "name")}</g:link></td>
 					
-						<td>${fieldValue(bean: teamInstance, field: "coach")}</td>
+						<g:if test="${session.user != null && teamInstance.league.admin.id.equals(session.user.id)}">
+							<td><g:link action="show" controller="contact" id="${teamInstance.coach.id}">${fieldValue(bean: teamInstance, field: "coach")}</g:link></td>
+						</g:if>
+						<g:else>
+							<td>${fieldValue(bean: teamInstance, field: "coach")}</td>
+						</g:else>
 					
 						<td>${fieldValue(bean: teamInstance, field: "league")}</td>
 					

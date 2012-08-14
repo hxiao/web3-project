@@ -82,9 +82,6 @@
 	</head>
 	<body>
 		<div>
-			<h1>Welcome to League Manager</h1>
-			<p>What to put here? News, I guess.</p>
-
 			<div id="controller-list" role="navigation">
 				<h2>Available Controllers:</h2>
 				<ul>

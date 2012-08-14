@@ -32,4 +32,18 @@ class Contact {
   String toString() {
   	"${lastName}, ${firstName} (${email})"
   }
+
+	boolean canViewPlayer(player) {
+		if(role.type.equals("Coach") || role.type.equals("Player")) {
+		 	return teams.collect{ it.id }.contains(player.team.id)
+		}
+		else {
+			return false
+		}
+	}
+	
+	boolean canViewCoach(contact) {
+		def adminIds = contact.leagues?.collect{ it.admin.id }
+		return adminIds.contains(id)
+	}
 }

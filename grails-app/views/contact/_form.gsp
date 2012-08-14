@@ -48,6 +48,12 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<g:hiddenField id="role" name="role.id" from="${web3.project.Role.list()}" optionKey="id" required="" value="${contactInstance?.role?.id}" class="many-to-one"/>
-	<g:message code="contact.role.value" default="${contactInstance?.role.type}"/>
+	<g:message code="contact.role.value" default="${contactInstance?.role?.type}"/>
 </div>
 
+<g:if test="${lastController != null}">
+	<g:hiddenField id="lastController" name="lastController" required="" value="${lastController}" />
+</g:if>
+<g:if test="${lastAction != null}">
+	<g:hiddenField id="lastAction" name="lastAction" required="" value="${lastAction}" />
+</g:if>

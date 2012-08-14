@@ -8,12 +8,6 @@
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
 		<div id="show-team" class="content scaffold-show" role="main">
 			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
@@ -34,7 +28,12 @@
 				<li class="fieldcontain">
 					<span id="coach-label" class="property-label"><g:message code="team.coach.label" default="Coach" /></span>
 					
+					<g:if test="${session.user != null && teamInstance.league.admin.id.equals(session.user.id)}">
 						<span class="property-value" aria-labelledby="coach-label"><g:link controller="contact" action="show" id="${teamInstance?.coach?.id}">${teamInstance?.coach?.encodeAsHTML()}</g:link></span>
+					</g:if>
+					<g:else>
+						<span class="property-value" aria-labelledby="coach-label">${teamInstance?.coach?.encodeAsHTML()}</span>
+					</g:else>
 					
 				</li>
 				</g:if>
@@ -53,7 +52,12 @@
 					<span id="players-label" class="property-label"><g:message code="team.players.label" default="Players" /></span>
 					
 						<g:each in="${teamInstance.players}" var="p">
-						<span class="property-value" aria-labelledby="players-label"><g:link controller="player" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></span>
+							<g:if test="${session.user != null && session.user.role.type.equals("Coach")}">
+								<span class="property-value" aria-labelledby="players-label"><g:link controller="player" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></span>
+							</g:if>
+							<g:else>
+								<span class="property-value" aria-labelledby="players-label">${p?.encodeAsHTML()}</span>
+							</g:else>
 						</g:each>
 					
 				</li>
