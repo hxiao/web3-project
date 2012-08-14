@@ -38,7 +38,7 @@ class LeagueController {
             return
         }
 
-        [leagueInstance: leagueInstance, teamInstanceList: leagueInstance.teams]
+        [leagueInstance: leagueInstance, teamInstanceList: leagueInstance.teams, gameInstanceList: leagueInstance.games()]
     }
 
     def edit(Long id) {

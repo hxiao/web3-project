@@ -27,7 +27,7 @@ class GameController {
         }
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'game.label', default: 'Game'), gameInstance.id])
-        redirect(action: "show", id: gameInstance.id)
+        redirect(action: "show", controller: "league", id: gameInstance.homeTeam.league.id)
     }
 
     def show(Long id) {

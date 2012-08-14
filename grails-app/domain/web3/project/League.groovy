@@ -28,4 +28,8 @@ class League {
 	String toString() {
 		"${name} (${season} ${year})"
 	}
+	
+	def games() {
+		Game.findAll(sort: "date") { teams.collect{it.id}.contains(homeTeam) || teams.collect{it.id}.contains(awayTeam) }
+	}
 }

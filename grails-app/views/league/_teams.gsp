@@ -10,11 +10,15 @@
 				<thead>
 					<tr>
 					
-						<g:sortableColumn property="name" title="${message(code: 'team.name.label', default: 'Name')}" />
+						<th><g:message code="team.name.label" default="Name" /></th>
 					
 						<th><g:message code="team.coach.label" default="Coach" /></th>
-					
-						<th><g:message code="team.league.label" default="League" /></th>
+						
+						<th><g:message code="team.wins.label" default="Wins" /></th>
+						
+						<th><g:message code="team.losses.label" default="Losses" /></th>
+						
+						<th><g:message code="team.draws.label" default="Draws" /></th>
 					
 					</tr>
 				</thead>
@@ -30,11 +34,16 @@
 						<g:else>
 							<td>${fieldValue(bean: teamInstance, field: "coach")}</td>
 						</g:else>
-					
-						<td>${fieldValue(bean: teamInstance, field: "league")}</td>
-					
+						
+						<td>${teamInstance.wins()}</td>
+						
+						<td>${teamInstance.losses()}</td>
+						
+						<td>${teamInstance.draws()}</td>
+						
 					</tr>
 				</g:each>
 				</tbody>
 			</table>
+			<g:link controller="team" action="create" params="${['team.league.id': leagueInstance.id]}">Create Team</g:link>
 		</div>

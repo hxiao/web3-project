@@ -28,7 +28,7 @@ class TeamController {
         }
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'team.label', default: 'Team'), teamInstance.id])
-        redirect(action: "show", id: teamInstance.id)
+        redirect(action: "show", controller: "league", id: teamInstance.league.id)
     }
 
     def show(Long id) {

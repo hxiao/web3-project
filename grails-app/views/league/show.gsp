@@ -27,6 +27,8 @@
 			</g:if>	
 		</div>
 		
-		<g:render template="../team/list"/>
+		<g:render template="teams"/>
+		
+		<g:render template="games"/>
 	</body>
 </html>
