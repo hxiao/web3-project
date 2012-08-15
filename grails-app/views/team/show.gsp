@@ -15,7 +15,7 @@
 				<span class="property-value" aria-labelledby="admin-label">League: <g:link action="show" controller="league" id="${teamInstance?.league.id}"><g:fieldValue bean="${teamInstance}" field="league"/></g:link></span><br/>
 				<span id="admin-label" class="property-label"><g:message code="league.admin.label" default="Coach: " /></span>
 				
-					<g:if test="${teamInstance?.coach.id == session.user?.id || teamInstance?.league.admin.id == session.user?.id}">
+					<g:if test="${teamInstance?.coach.id == session.user?.id || teamInstance?.league.admin.id == session.user?.id || session.user?.players?.collect{it.team.id}.contains(teamInstance?.id)}">
 						<span class="property-value" aria-labelledby="admin-label"><g:link action="show" controller="contact" id="${teamInstance?.coach.id}">${teamInstance?.coach?.encodeAsHTML()}</g:link></span>
 					</g:if>
 					<g:else>

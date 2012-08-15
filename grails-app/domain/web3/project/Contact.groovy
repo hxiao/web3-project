@@ -7,7 +7,7 @@ class Contact {
   String phone
   String password
   Role role
-  static hasMany = [leagues: League, teams: Team, locations: Location]
+  static hasMany = [leagues: League, teams: Team, locations: Location, players: Player]
 
   static mapping = {
     table "Contact"
@@ -34,8 +34,11 @@ class Contact {
   }
 
 	boolean canViewPlayer(player) {
-		if(role.type.equals("Coach") || role.type.equals("Player")) {
+		if(role.type.equals("Coach")) {
 		 	return teams.collect{ it.id }.contains(player.team.id)
+		}
+		else if(role.type.equals("Player")) {
+			return players.collect{ it.team.id }.contains(player.team.id)
 		}
 		else {
 			return false
@@ -44,7 +47,6 @@ class Contact {
 	
 	boolean canViewCoach(contact) {
 		def adminIds = contact.leagues.collect{ it.admin.id }
-		return false
-		//return adminIds.contains(id)
+		return adminIds.contains(id)
 	}
 }

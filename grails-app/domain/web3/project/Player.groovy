@@ -6,6 +6,8 @@ class Player {
   Contact contact
   Team team
 
+	static fetchMode = [team: "eager"]
+
   static mapping = {
     table "Player"
     id column: "Player_ID"
