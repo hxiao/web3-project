@@ -14,7 +14,7 @@
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			
-			<g:if test="${locationInstance?.contact.id == session.user?.id || session.user?.role.type.equals("League Admin")}">
+			<g:if test="${locationInstance?.contact.id == session.user?.id || session.user?.role?.type.equals("League Admin")}">
 				<p><g:link class="edit" action="edit" controller="location" id="${locationInstance?.id}">Edit Location</g:link></p>
 			</g:if>
 			

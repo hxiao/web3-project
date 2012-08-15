@@ -9,29 +9,16 @@
 	</head>
 	<body>
 		<div id="show-contact" class="content scaffold-show" role="main">
-			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
+			<h1>${contactInstance.lastName}, ${contactInstance.firstName}</h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
-			<ol class="property-list contact">
 			
-				<g:if test="${contactInstance?.lastName}">
-				<li class="fieldcontain">
-					<span id="lastName-label" class="property-label"><g:message code="contact.lastName.label" default="Last Name" /></span>
-					
-						<span class="property-value" aria-labelledby="lastName-label"><g:fieldValue bean="${contactInstance}" field="lastName"/></span>
-					
-				</li>
-				</g:if>
+			<g:if test="${session.user?.id == contactInstance.id}">
+				<p><g:link class="edit" action="edit" controller="contact" id="${contactInstance?.id}">Edit Contact</g:link></p>
+			</g:if>
 			
-				<g:if test="${contactInstance?.firstName}">
-				<li class="fieldcontain">
-					<span id="firstName-label" class="property-label"><g:message code="contact.firstName.label" default="First Name" /></span>
-					
-						<span class="property-value" aria-labelledby="firstName-label"><g:fieldValue bean="${contactInstance}" field="firstName"/></span>
-					
-				</li>
-				</g:if>
+			<ul class="property-list contact">
 			
 				<g:if test="${contactInstance?.email}">
 				<li class="fieldcontain">
@@ -60,14 +47,8 @@
 				</li>
 				</g:if>
 			
-			</ol>
-			<g:form>
-				<fieldset class="buttons">
-					<g:hiddenField name="id" value="${contactInstance?.id}" />
-					<g:link class="edit" action="edit" id="${contactInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-				</fieldset>
-			</g:form>
+			</ul>
+			
 		</div>
 	</body>
 </html>

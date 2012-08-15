@@ -46,7 +46,7 @@
 			<div class="pagination">
 				<g:paginate total="${locationInstanceTotal}" />
 			</div>
-			<g:if test="${session.user?.role.type.equals("League Admin")}">
+			<g:if test="${session.user?.role?.type.equals("League Admin")}">
 			<g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link>
 			</g:if>
 		</div>
