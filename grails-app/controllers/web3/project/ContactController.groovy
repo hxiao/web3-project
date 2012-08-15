@@ -146,10 +146,9 @@ class ContactController {
 		def login = {}
 
 	  def authenticate = {
-	    def user = Contact.findByEmailAndPassword(params.email, params.password, [fetch: [teams:"eager", players:"eager"]])
+	    def user = Contact.findByEmailAndPassword(params.email, params.password, [fetch: [role:"eager", teams:"eager", players:"eager"]])
 	    if(user){
 	      session.user = user
-	      session.user.role = user.role
 	      flash.message = "Hello ${user.firstName}!"
 	      redirect(controller:"league", action:"list")      
 	    }else{
@@ -165,7 +164,6 @@ class ContactController {
 			}
 		
 	    flash.message = "Goodbye ${session.user.firstName}."
-			session.user.role = null
 	    session.user = null
 	    redirect(uri: "/")      
 	  }
