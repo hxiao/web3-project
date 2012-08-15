@@ -49,7 +49,4 @@
 				</g:each>
 				</tbody>
 			</table>
-			<g:if test="${leagueInstance?.admin.id == session.user?.id}">
-			<g:link controller="game" action="create" params="[leagueId: leagueInstance.id]">Create Game</g:link>
-			</g:if>
 		</div>

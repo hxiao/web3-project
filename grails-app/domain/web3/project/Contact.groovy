@@ -43,7 +43,8 @@ class Contact {
 	}
 	
 	boolean canViewCoach(contact) {
-		def adminIds = contact.leagues?.collect{ it.admin.id }
-		return adminIds.contains(id)
+		def adminIds = contact.leagues.collect{ it.admin.id }
+		return false
+		//return adminIds.contains(id)
 	}
 }

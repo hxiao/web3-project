@@ -23,6 +23,10 @@ class Team {
 		name
 	}
 	
+	def games() {
+		Game.findAll(sort: "date") { homeTeam == this || awayTeam == this }
+	}
+	
 	int homeWins() {
 		def games = Game.findAllByHomeTeam(this)
 		return games.grep{it.homeScore != null && it.awayScore != null && it.homeScore > it.awayScore}.size()

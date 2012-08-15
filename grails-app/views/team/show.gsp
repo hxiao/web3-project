@@ -9,68 +9,31 @@
 	</head>
 	<body>
 		<div id="show-team" class="content scaffold-show" role="main">
-			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
+			<h1><g:fieldValue bean="${teamInstance}" field="name"/></h1>
+
+			<h4>
+				<span class="property-value" aria-labelledby="admin-label">League: <g:link action="show" controller="league" id="${teamInstance?.league.id}"><g:fieldValue bean="${teamInstance}" field="league"/></g:link></span><br/>
+				<span id="admin-label" class="property-label"><g:message code="league.admin.label" default="Coach: " /></span>
+				
+					<g:if test="${teamInstance?.coach.id == session.user?.id || teamInstance?.league.admin.id == session.user?.id}">
+						<span class="property-value" aria-labelledby="admin-label"><g:link action="show" controller="contact" id="${teamInstance?.coach.id}">${teamInstance?.coach?.encodeAsHTML()}</g:link></span>
+					</g:if>
+					<g:else>
+						<span class="property-value" aria-labelledby="admin-label">${teamInstance?.coach?.encodeAsHTML()}</span>
+					</g:else>
+				
+			</h4>
+			<g:if test="${teamInstance?.coach.id == session.user?.id || teamInstance?.league.admin.id == session.user?.id}">
+				<g:link class="edit" action="edit" id="${teamInstance?.id}">[Edit Team]</g:link>
+			</g:if>
+			
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
-			<ol class="property-list team">
 			
-				<g:if test="${teamInstance?.name}">
-				<li class="fieldcontain">
-					<span id="name-label" class="property-label"><g:message code="team.name.label" default="Name" /></span>
-					
-						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${teamInstance}" field="name"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${teamInstance?.coach}">
-				<li class="fieldcontain">
-					<span id="coach-label" class="property-label"><g:message code="team.coach.label" default="Coach" /></span>
-					
-					<g:if test="${session.user != null && teamInstance.league.admin.id.equals(session.user.id)}">
-						<span class="property-value" aria-labelledby="coach-label"><g:link controller="contact" action="show" id="${teamInstance?.coach?.id}">${teamInstance?.coach?.encodeAsHTML()}</g:link></span>
-					</g:if>
-					<g:else>
-						<span class="property-value" aria-labelledby="coach-label">${teamInstance?.coach?.encodeAsHTML()}</span>
-					</g:else>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${teamInstance?.league}">
-				<li class="fieldcontain">
-					<span id="league-label" class="property-label"><g:message code="team.league.label" default="League" /></span>
-					
-						<span class="property-value" aria-labelledby="league-label"><g:link controller="league" action="show" id="${teamInstance?.league?.id}">${teamInstance?.league?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${teamInstance?.players}">
-				<li class="fieldcontain">
-					<span id="players-label" class="property-label"><g:message code="team.players.label" default="Players" /></span>
-					
-						<g:each in="${teamInstance.players}" var="p">
-							<g:if test="${session.user != null && session.user.role.type.equals("Coach")}">
-								<span class="property-value" aria-labelledby="players-label"><g:link controller="player" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></span>
-							</g:if>
-							<g:else>
-								<span class="property-value" aria-labelledby="players-label">${p?.encodeAsHTML()}</span>
-							</g:else>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
-			</ol>
-			<g:form>
-				<fieldset class="buttons">
-					<g:hiddenField name="id" value="${teamInstance?.id}" />
-					<g:link class="edit" action="edit" id="${teamInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-				</fieldset>
-			</g:form>
+			<g:render template="players"/>
+
+			<g:render template="games"/>
 		</div>
 	</body>
 </html>
