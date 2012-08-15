@@ -7,7 +7,7 @@
 		<g:message code="game.homeTeam.label" default="Home Team" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="homeTeam" name="homeTeam.id" from="${web3.project.Team.list()}" optionKey="id" required="" value="${gameInstance?.homeTeam?.id}" class="many-to-one"/>
+	<g:select id="homeTeam" name="homeTeam.id" from="${teams}" optionKey="id" required="" value="${gameInstance?.homeTeam?.id}" class="many-to-one"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: gameInstance, field: 'awayTeam', 'error')} required">
@@ -15,7 +15,7 @@
 		<g:message code="game.awayTeam.label" default="Away Team" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="awayTeam" name="awayTeam.id" from="${web3.project.Team.list()}" optionKey="id" required="" value="${gameInstance?.awayTeam?.id}" class="many-to-one"/>
+	<g:select id="awayTeam" name="awayTeam.id" from="${teams}" optionKey="id" required="" value="${gameInstance?.awayTeam?.id}" class="many-to-one"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: gameInstance, field: 'date', 'error')} required">

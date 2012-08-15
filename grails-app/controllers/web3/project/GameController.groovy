@@ -16,7 +16,7 @@ class GameController {
     }
 
     def create() {
-        [gameInstance: new Game(params)]
+        [gameInstance: new Game(params), teams: League.findById(params.leagueId)?.teams]
     }
 
     def save() {
@@ -49,7 +49,7 @@ class GameController {
             return
         }
 
-        [gameInstance: gameInstance]
+        [gameInstance: gameInstance, teams: homeTeam.league.teams]
     }
 
     def update(Long id, Long version) {
