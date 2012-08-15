@@ -49,7 +49,7 @@ class GameController {
             return
         }
 
-        [gameInstance: gameInstance, teams: homeTeam.league.teams]
+        [gameInstance: gameInstance, teams: gameInstance.homeTeam.league.teams]
     }
 
     def update(Long id, Long version) {
