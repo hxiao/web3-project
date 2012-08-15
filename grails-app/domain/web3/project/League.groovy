@@ -8,6 +8,7 @@ class League {
   String season
   Contact admin
   static hasMany = [teams: Team]
+	static fetchMode = [teams: "eager"]
 
   static mapping = {
     table "League"

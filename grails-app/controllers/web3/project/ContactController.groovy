@@ -12,6 +12,24 @@ class ContactController {
         redirect(action: "list", params: params)
     }
 
+		def dashboard() {
+			if(session.user) {
+				def user = Contact.get(session.user.id)
+				if(user.role.type == "Player") {
+					[leagueInstanceList: user.leagues(), teamInstanceList: user.teams(), gameInstanceList: user.games()]
+				}
+				else if(user.role.type == "Coach") {
+					[leagueInstanceList: user.leagues(), teamInstanceList: user.teams(), gameInstanceList: user.games()]
+				}
+				else if(user.role.type == "League Admin") {
+					[leagueInstanceList: user.leagues(), gameInstanceList: user.games()]
+				}
+			}
+			else {
+				redirect(action: "list", controller: "league")
+			}
+		}
+
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         [contactInstanceList: Contact.list(params), contactInstanceTotal: Contact.count()]
@@ -146,11 +164,11 @@ class ContactController {
 		def login = {}
 
 	  def authenticate = {
-	    def user = Contact.findByEmailAndPassword(params.email, params.password, [fetch: [role:"eager", teams:"eager", players:"eager"]])
+	    def user = Contact.findByEmailAndPassword(params.email, params.password, [fetch: [role:"eager", teams:"eager", players:"eager", leagues:"eager"]])
 	    if(user){
 	      session.user = user
 	      flash.message = "Hello ${user.firstName}!"
-	      redirect(controller:"league", action:"list")      
+	      redirect(uri:"/")      
 	    }else{
 	      flash.message = "Sorry, that username/password is not recognized. Please try again."
 	      redirect(action:"login")
@@ -160,7 +178,7 @@ class ContactController {
 	  def logout = {
 			if(session.user == null) {
 				flash.message = "You are not logged in."
-				redirect(action: "list")
+				redirect(uri:"/")
 			}
 		
 	    flash.message = "Goodbye ${session.user.firstName}."
