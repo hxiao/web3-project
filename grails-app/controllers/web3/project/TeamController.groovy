@@ -16,8 +16,7 @@ class TeamController {
     }
 
     def create() {
-        [teamInstance: new Team(params),
-				newContactId: params.newContactId]
+        [teamInstance: new Team(params), newContactId: params.newContactId]
     }
 
     def save() {

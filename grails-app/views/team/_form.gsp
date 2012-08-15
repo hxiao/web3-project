@@ -18,7 +18,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<g:select id="coach" name="coach.id" from="${Contact.findAllByRole(Role.findByType("Coach"))}" optionKey="id" required="" value="${newContactId == null ? teamInstance?.coach?.id : newContactId}" class="many-to-one"/>
-	<g:link controller="contact" action="create" params="['role.id': Role.findByType("Coach")?.id, lastController: params.controller, lastAction: params.action]">${message(code: 'default.add.label', args: [message(code: 'player.label', default: 'Coach')])}</g:link>
+	<g:link controller="contact" action="create" params="['role.id': Role.findByType("Coach")?.id, lastController: params.controller, lastAction: params.action]">New Contact</g:link>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: teamInstance, field: 'league', 'error')} required">

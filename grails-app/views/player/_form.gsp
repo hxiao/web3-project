@@ -16,7 +16,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<g:select id="contact" name="contact.id" from="${web3.project.Contact.findAllByRole(Role.findByType("Player"))}" optionKey="id" required="" value="${newContactId == null? playerInstance?.contact?.id : newContactId}" class="many-to-one"/>
-	<g:link controller="contact" action="create" params="['role.id': Role.findByType("Player")?.id, lastController: params.controller, lastAction: params.action]">${message(code: 'default.add.label', args: [message(code: 'player.label', default: 'Player')])}</g:link>
+	<g:link controller="contact" action="create" params="['role.id': Role.findByType("Player")?.id, lastController: params.controller, lastAction: params.action]">New Contact</g:link>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: playerInstance, field: 'position', 'error')} ">

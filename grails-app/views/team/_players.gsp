@@ -10,14 +10,16 @@
 				<thead>
 					<tr>
 					
-						<g:sortableColumn property="age" title="${message(code: 'player.age.label', default: 'Age')}" />
+						<th><g:message code="player.age.label" default="Age" /></th>
 					
 						<th><g:message code="player.contact.name.label" default="Name" /></th>
 						
-						<g:sortableColumn property="position" title="${message(code: 'player.position.label', default: 'Position')}" />
-					
-						<th><g:message code="player.team.label" default="Team" /></th>
-					
+						<th><g:message code="player.position.label" default="Position" /></th>
+						
+						<g:if test="${teamInstance?.coach.id == session.user?.id}">
+						<th></th>
+						</g:if>
+										
 					</tr>
 				</thead>
 				<tbody>
@@ -34,12 +36,17 @@
 						</g:else>
 											
 						<td>${fieldValue(bean: playerInstance, field: "position")}</td>
-					
-						<td><g:link action="show" controller="team" id="${playerInstance.team?.id}">${fieldValue(bean: playerInstance, field: "team")}</g:link></td>
+						
+						<g:if test="${teamInstance?.coach.id == session.user?.id}">
+						<td><g:link action="edit" controller="player" id="${playerInstance.id}">edit</g:link></td>
+						</g:if>
 					
 					</tr>
 				</g:each>
 				</tbody>
 			</table>
+			<g:if test="${teamInstance?.coach.id == session.user?.id}">
+			<g:link controller="player" action="create" params="${['team.id': teamInstance.id]}">Add Player</g:link>
+			</g:if>
 		</div>
 

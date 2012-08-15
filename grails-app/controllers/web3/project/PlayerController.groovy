@@ -28,7 +28,7 @@ class PlayerController {
         }
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'player.label', default: 'Player'), playerInstance.id])
-        redirect(action: "show", id: playerInstance.id)
+        redirect(action: "show", controller: "team", id: playerInstance.team.id)
     }
 
     def show(Long id) {
@@ -79,7 +79,7 @@ class PlayerController {
         }
 
         flash.message = message(code: 'default.updated.message', args: [message(code: 'player.label', default: 'Player'), playerInstance.id])
-        redirect(action: "show", id: playerInstance.id)
+        redirect(action: "show", controller: "team", id: playerInstance.team.id)
     }
 
     def delete(Long id) {
