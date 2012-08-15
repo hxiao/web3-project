@@ -19,3 +19,11 @@ To run the application as a war:
 To build a war file in the target directory:
 
 `grails war`
+
+Creating League Admin Users
+===========================
+
+League admin users cannot be created from within the application. They must be created by inserting
+data directly in the database.
+
+All other user types can be created by other users within the application itself.
