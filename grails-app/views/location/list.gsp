@@ -8,11 +8,6 @@
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
 		<div id="list-location" class="content scaffold-list" role="main">
 			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
@@ -22,11 +17,11 @@
 				<thead>
 					<tr>
 					
-						<g:sortableColumn property="street" title="${message(code: 'location.street.label', default: 'Street')}" />
+						<th><g:message code="location.street.label" default="Street Address" /></th>
 					
-						<g:sortableColumn property="city" title="${message(code: 'location.city.label', default: 'City')}" />
+						<th><g:message code="location.city.label" default="City" /></th>
 					
-						<g:sortableColumn property="zipCode" title="${message(code: 'location.zipCode.label', default: 'Zip Code')}" />
+						<th><g:message code="location.zipCode.label" default="Zip Code" /></th>
 					
 						<th><g:message code="location.contact.label" default="Contact" /></th>
 					
@@ -51,6 +46,9 @@
 			<div class="pagination">
 				<g:paginate total="${locationInstanceTotal}" />
 			</div>
+			<g:if test="${session.user?.role.type.equals("League Admin")}">
+			<g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link>
+			</g:if>
 		</div>
 	</body>
 </html>

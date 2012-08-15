@@ -28,7 +28,8 @@
 		  <div id="nav">
 			  <ul>
 				  <li><a href="${createLink(uri: '/')}">Home</a></li>
-				  <li><a href="${createLink(uri: '/league/list')}">Leagues</a></li>		
+				  <li><a href="${createLink(controller: 'league')}">Leagues</a></li>
+					<li><a href="${createLink(controller: 'location')}">Locations</a></li>		
 			  </ul>		
 		  </div>
 

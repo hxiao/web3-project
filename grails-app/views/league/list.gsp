@@ -17,11 +17,11 @@
 				<thead>
 					<tr>
 					
-						<g:sortableColumn property="name" title="${message(code: 'league.name.label', default: 'Name')}" />
+						<th><g:message code="league.name.label" default="Name" /></th>
 					
-						<g:sortableColumn property="year" title="${message(code: 'league.year.label', default: 'Year')}" />
+						<th><g:message code="league.year.label" default="Year" /></th>
 					
-						<g:sortableColumn property="season" title="${message(code: 'league.season.label', default: 'Season')}" />
+						<th><g:message code="league.season.label" default="Season" /></th>
 					
 						<th><g:message code="league.admin.label" default="Admin" /></th>
 					
