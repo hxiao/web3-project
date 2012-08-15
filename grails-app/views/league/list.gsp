@@ -46,6 +46,10 @@
 			<div class="pagination">
 				<g:paginate total="${leagueInstanceTotal}" />
 			</div>
+			
+			<g:if test="${session.user?.role.type.equals("League Admin")}">
+			<g:link controller="league" action="create">Create League</g:link>
+			</g:if>
 		</div>
 	</body>
 </html>

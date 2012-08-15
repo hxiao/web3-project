@@ -30,6 +30,11 @@ class League {
 	}
 	
 	def games() {
-		Game.findAll(sort: "date") { teams.collect{it.id}.contains(homeTeam) || teams.collect{it.id}.contains(awayTeam) }
+		if(this.teams.empty) {
+			return []
+		}
+		else {
+			return Game.findAll(sort: "date") { homeTeam in teams || awayTeam in teams }
+		}
 	}
 }

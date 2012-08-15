@@ -1,5 +1,6 @@
 <%@ page import="web3.project.League" %>
-
+<%@ page import="web3.project.Role" %>
+<%@ page import="web3.project.Contact" %>
 
 
 <div class="fieldcontain ${hasErrors(bean: leagueInstance, field: 'name', 'error')} required">
@@ -31,5 +32,5 @@
 		<g:message code="league.admin.label" default="Admin" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="admin" name="admin.id" from="${web3.project.Contact.list()}" optionKey="id" required="" value="${leagueInstance?.admin?.id}" class="many-to-one"/>
+	<g:select id="admin" name="admin.id" from="${Contact.findAllByRole(Role.findByType("League Admin"))}" optionKey="id" required="" value="${leagueInstance?.admin?.id}" class="many-to-one"/>
 </div>
